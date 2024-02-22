@@ -1,0 +1,42 @@
+﻿<Window x:Class="L6_7_Nikolaev.Windows.ListUserForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:L6_7_Nikolaev.Windows" xmlns:local1="clr-namespace:L6_7_Nikolaev.Models"
+        mc:Ignorable="d"
+        Style="{StaticResource base_windows_3}"  
+        Title="Список" Height="450" Width="805">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="gridData" CanUserAddRows="False" HorizontalAlignment="Right"
+                  RowBackground="Gray" AlternatingRowBackground="White" 
+                  AutoGenerateColumns="False" FrozenColumnCount="5" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Фамилия" Width="*" Binding="{Binding Path=SurName}"/>
+                <DataGridTextColumn Header="Роль" Width="*" Binding="{Binding Path=Role}"/>
+                <DataGridTextColumn Header="Логин" Width="*" Binding="{Binding Path=Login}"/>
+                <DataGridTextColumn Header="Пароль" Width="*" Binding="{Binding Path=Password}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Button x:Name="AddButton"  Content="Добавить" Style="{StaticResource butFile}"/>
+            <Button x:Name="RemoveButton"  Content="Удалить" Style="{StaticResource butFile}"/>
+            <Button x:Name="ExportButton" Content="Экспорт" Style="{StaticResource butFile}" Click="ExportButton_Click"/>
+        </StackPanel>
+       
+        <Button Grid.ColumnSpan="2" x:Name="butOpenExel" Content="Выбрать файл" Grid.Row="1" 
+                Style="{StaticResource butFile}"
+                Click="butOpenExel_Click"/>
+        <DataGrid Grid.ColumnSpan="2" x:Name="dataGridExel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2"/>
+    </Grid>
+</Window>
